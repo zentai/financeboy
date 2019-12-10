@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"settings":
+			{
+				"python_interpreter": "/Users/Zen/code/FinRPG/env/bin/python"
+			}
+		}
+	],
+	"virtualenv": "/Users/Zen/code/FinRPG/env"
+}
