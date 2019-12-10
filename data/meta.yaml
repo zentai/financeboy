@@ -1,0 +1,72 @@
+SV3U.SI.csv:
+    code: SV3U.SI
+    name: Soilbuild REIT
+    start: 2013-08-16
+    desc: "With an impressive yield of 8.4% last year, this industrial property-focused REIT has obviously caught the eye of investors despite its high D/E ratio which indicates higher risk. It specialises in industries like marine, oil & gas, manufacturing, electronics and R&D. Key properties in its portfolio include Solaris at One-North, Eightrium at Changi Business Park and Tuas Connection."
+
+M1GU.SI.csv:
+    code: M1GU.SI
+    name: Sabana Shari'ah Compliant Industrial Real Estate Investment Trust
+    start: 2010-11-26
+    desc: "Another industrial REIT with promising stats is the Shariah law-compliant Sabana REIT, which manages a number of standalone industrial buildings all over the island. Apart from SGX, it’s also listed on MSCI index and the FTSE index. It seemingly had a troubled 2017, but there’s a new CEO at the helm this year promising to turn things around."
+
+P40U.SI.csv:
+    code: P40U.SI
+    name: Starhill Global Real Estate Investment Trust
+    start: 2007-11-06
+    desc: "Starhill Global’s best-known properties are Wisma Atria and Ngee Ann City on Orchard Road, but the Singapore-based company also manages retail and commercial properties in KL, Tokyo, Chengdu, Adelaide and Perth. Note the relatively low D/E and P/BV ratios."
+
+AW9U.SI.csv:
+    code: AW9U.SI
+    name: First Real Estate Investment Trust
+    start: 2007-11-07
+    desc: "If you want to invest in Asia’s growing healthcare sector, consider Singapore’s first healthcare real estate investment trust First REIT. It manages a large portfolio of hospitals and healthcare-related buildings in Indonesia, with a couple of properties in Singapore and South Korea."
+
+A68U.SI.csv:
+    code: A68U.SI
+    name: Ascott Residence Trust
+    start: 2007-10-24
+    desc: "Part of the real estate behemoth that is CapitaLand, Ascott Residence Trust focuses on hotels and serviced residences, mainly properties under the Ascott, Somerset and Citadines hospitality chains. Although hospitality might be a volatile sector due to the short term nature of its tenants (guests), Ascott REIT has properties in 14 countries, which spreads out the risk."
+
+A17U.SI.csv:
+    code: A17U.SI
+    name: Ascendas Real Estate Investment Trust
+    start: 2007-11-06
+    desc: "Singapore’s largest listed business/industrial REIT absolutely dominates the business park scene with over 100 properties here, plus 30+ in Australia. Key names in its portfolio as Science Park, One-North and Changi Business Park. The interesting thing about Ascendas’ size is that it also means many, many tenants including big players like Singtel – therefore it’s not dependent on just a few core tenants."
+
+N2IU.SI.csv:
+    code: N2IU.SI
+    name: Mapletree Commercial Trust
+    start: 2011-04-27
+    desc: "Business, retail and commercial property REIT Mapletree Commercial Trust should ring a bell as they manage five major developments in the CBD and Harbourfront. These include VivoCity, Mapletree Business City, Mapletree Anson, PSA Building and Bank of America Merrill Lynch Harbourfront."
+
+T82U.SI.csv:
+    code: T82U.SI
+    name: Suntec Real Estate Investment Trust
+    start: 2007-11-05
+    desc: "Everyone knows about Suntec City, the namesake property of Suntec REIT, but Suntec REIT also has a large share in other large complexes like One Raffles Quay and Marina Bay Financial Centre, plus commercial buildings in Melbourne and Sydney."
+
+
+SK6U.SI.csv:
+    code: SK6U.SI
+    name: SPH REIT
+    start: 2013-07-24
+    desc: "Everyone’s favourite newspaper publisher SPH has a REIT subsidiary that manages two buildings, Paragon and the Clementi Mall. Note that its D/E ratio is extraordinarily low, meaning it is financially stable and should have plenty of room to grow."
+
+J69U.SI.csv:
+    code: J69U.SI
+    name: Frasers Centrepoint Trust
+    start: 2007-11-06
+    desc: "Frasers Centrepoint is a well-known REIT that manages a portfolio of 6 retail properties in the heartlands: Causeway Point, Northpoint City, Changi City Point, Yewtee Point, Anchorpoint and Bedok Point. It falls under the umbrella group Frasers Property, which has a variety of property assets ranging from condos to hotels to business parks all over the world."
+
+C38U.SI.csv:
+    code: C38U.SI
+    name: CapitaLand Mall Trust
+    start: 2007-11-05
+    desc: "As the very first REIT to be listed on SGX in 2002, CapitaLand Mall Trust is still doing well after all these years, and dominates the retail sector – just go to any CapitaMall and you’ll see why. They manage the lion’s share of shopping malls all over Singapore, including Plaza Singapura, Tampines Mall, Raffles City, IMM, Junction 8 and JCube. Plus they also own part of CapitaLand Retail China Trust, a China shopping mall REIT for those looking to capitalise on Mainlanders’ appetite for retail."
+
+K71U.SI.csv:
+    code: K71U.SI
+    name: Keppel REIT
+    start: 2007-11-06
+    desc: "Another giant in the Singapore REITs scene is Keppel REIT, which has been listed on SGX since 2006 and manages mainly premium office buildings like Ocean Financial Centre, Marina Bay Financial Centre, One Raffles Quay, and similar business developments in Australia. However, note that it has been underperforming compared to the others on this list."
