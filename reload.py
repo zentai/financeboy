@@ -6,24 +6,13 @@ import logging
 from pandas.io.json import json_normalize
 from yahoofinancials import YahooFinancials
 
-logformat = "%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s"
-datefmt = "%m-%d %H:%M"
 
-logging.basicConfig(filename="app.log", level=logging.INFO, filemode="w",
-                    format=logformat, datefmt=datefmt)
+def fetch(meta_path='data/meta.yaml'):
+    logger = logging.getLogger(__name__)
 
-stream_handler = logging.StreamHandler(sys.stderr)
-stream_handler.setFormatter(logging.Formatter(fmt=logformat, datefmt=datefmt))
+    with open(meta_path) as stream:
+        metas = yaml.load(stream)
 
-logger = logging.getLogger("app")
-logger.addHandler(stream_handler)
-
-def load_meta():
-    with open('data/meta.yaml') as stream:
-        return yaml.load(stream)
-
-def main():
-    metas = load_meta()
     for fname, meta in metas.items():
         code = meta['code']
         start = str(meta['start'])
@@ -48,8 +37,10 @@ def main():
                   index=False,
                   columns=['Date', 'Open', 'High', 'Low', 'Close',
                            'Adj Close', 'Volume'])
-        logger.info('Download {meta} - {fname}'.format(meta=meta, fname=fname))
+        logger.info('Download: {fname}'.format(fname=fname))
+        logger.debug('Meta: {meta}'.format(meta=meta))
 
 
 if __name__ == '__main__':
-    main()
+    import reload
+    reload.fetch()
