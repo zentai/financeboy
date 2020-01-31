@@ -6,6 +6,7 @@ from datetime import timedelta
 
 import matplotlib.pyplot as plt
 
+
 logformat = "%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s"
 datefmt = "%m-%d %H:%M"
 
@@ -18,12 +19,12 @@ stream_handler.setFormatter(logging.Formatter(fmt=logformat, datefmt=datefmt))
 logger = logging.getLogger("app")
 logger.addHandler(stream_handler)
 
+
 class Profile(object):
     """
     1. we have cash
     2. we have holding CODE - Quantity
     3. we have trasaction history: date, id, strike_price, Quantity, cost
-
     """
     def __init__(self, cash=0):
         self.init_cash = cash
@@ -130,7 +131,6 @@ class Reits(object):
         else:
             pass
 
-
         date_serials = sorted(self.hist_price_df.index.values)
         self.first_day = date_serials[0]
         self.last_day = date_serials[-1]
@@ -157,7 +157,6 @@ class Reits(object):
         self.hist_price_df['sharp_ratio'] = rolling_profit / rolling_risk * (252 ** 0.5)
 
         return profit / risk * (252 ** 0.5)
-
 
 
     def _sig_count(sig):
@@ -247,7 +246,7 @@ if __name__ == '__main__':
     # df['div_std_perct'] = df['div_std'] / df['div_mean']
     # df = df.sort_values(by=['close_std_perct', 'div_std_perct', 'performance'])
     df = df.sort_values(by=[ 'performance', 'div_mean'])
-    print df
+    print(df)
 
 
 
