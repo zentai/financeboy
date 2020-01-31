@@ -8,18 +8,39 @@
 	"buffers":
 	[
 		{
+			"file": "project.todo",
+			"settings":
+			{
+				"buffer_size": 239,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "core.py",
 			"settings":
 			{
 				"buffer_size": 10527,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "fin_robot.py",
+			"settings":
+			{
+				"buffer_size": 33,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "import logging"
 			}
 		},
 		{
 			"file": "reload.py",
 			"settings":
 			{
-				"buffer_size": 1457,
+				"buffer_size": 1943,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -52,12 +73,12 @@
 		"selected_items":
 		[
 			[
-				"virtualenv",
-				"Virtualenv: Activate"
-			],
-			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"virtualenv",
+				"Virtualenv: Activate"
 			],
 			[
 				"python",
@@ -89,9 +110,15 @@
 	],
 	"file_history":
 	[
+		"/Users/Zen/Library/Application Support/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/Users/Zen/code/FinRPG/.gitignore",
+		"/Users/Zen/code/FinRPG/FinRPG.sublime-project",
+		"/Users/Zen/code/fuck4hour/resource.txt",
+		"/Users/Zen/code/FinRPG/data/dividends/A68U.SI.csv",
+		"/Users/Zen/code/FinRPG/data/history_price/A17U.SI.csv",
+		"/Users/Zen/code/FinRPG/reload.py",
 		"/Users/Zen/code/FinRPG/core.py",
 		"/Users/Zen/code/questalliance/assets/untitled.py",
-		"/Users/Zen/code/FinRPG/FinRPG.sublime-project",
 		"/Users/Zen/code/questalliance/assets/endpoints.py"
 	],
 	"find":
@@ -112,6 +139,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"print",
+			"YahooFinancials",
 			"backend_host_name",
 			"setup.py",
 			"commands.server",
@@ -135,11 +164,43 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "project.todo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								215
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"plain_tasks_remain_time_phantoms":
+							[
+							],
+							"syntax": "Packages/PlainTasks/PlainTasks.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
 					"file": "core.py",
 					"semi_transient": false,
 					"settings":
@@ -151,44 +212,50 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								8120,
+								8120
 							]
 						],
 						"settings":
 						{
+							"git_gutter_is_enabled": true,
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3263.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "reload.py",
+					"buffer": 2,
+					"file": "fin_robot.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1457,
+						"buffer_size": 33,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								33,
+								33
 							]
 						],
 						"settings":
 						{
+							"auto_name": "import logging",
+							"git_gutter_is_enabled": true,
+							"rulers":
+							[
+								80
+							],
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -196,6 +263,37 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "reload.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1943,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1900,
+								1900
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 119.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -254,12 +352,28 @@
 		"selected_items":
 		[
 			[
-				"endpo",
-				"assets/endpoints.py"
+				"",
+				"FinRPG.sublime-project"
 			],
 			[
-				"",
-				"backend/server.py"
+				".git",
+				".gitignore"
+			],
+			[
+				"core",
+				"core.py"
+			],
+			[
+				"dividend",
+				"data/dividends/A68U.SI.csv"
+			],
+			[
+				"reload",
+				"reload.py"
+			],
+			[
+				"endpo",
+				"assets/endpoints.py"
 			],
 			[
 				"end",
@@ -298,7 +412,7 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,

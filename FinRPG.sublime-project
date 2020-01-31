@@ -9,5 +9,9 @@
 			}
 		}
 	],
-	"virtualenv": "/Users/Zen/code/FinRPG/env"
+    "settings": {
+        "translate_tabs_to_spaces": true,
+        "rulers": [80],
+    },
+	"virtualenv": "/Users/Zen/code/FinRPG/env",
 }
