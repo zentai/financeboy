@@ -24,7 +24,7 @@ def load_meta():
 
 def main():
     metas = load_meta()
-    for fname, meta in metas.iteritems():
+    for fname, meta in metas.items():
         code = meta['code']
         start = str(meta['start'])
         end = datetime.datetime.today().strftime('%Y-%m-%d')
