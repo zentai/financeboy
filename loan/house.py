@@ -53,8 +53,8 @@ def default():
     installment = 6000
     origin_installment_plan = run(pv=pv, rate=0.0452, installment=installment)
     new_installment_plan = run(pv=pv, rate=0.0427, installment=installment)
-    print "years: %s, total: %s" % origin_installment_plan[:-1]
-    print "years: %s, total: %s" % new_installment_plan[:-1]
+    print("years: %s, total: %s" % origin_installment_plan[:-1])
+    print("years: %s, total: %s" % new_installment_plan[:-1])
 
 
 if __name__ == '__main__':
