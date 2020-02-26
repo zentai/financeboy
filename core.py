@@ -77,15 +77,6 @@ class Profile(object):
         # return yield_percent
 
 
-
-
-
-# def plot(code):
-
-#     plt.figure()
-#     df.plot(x='code', y='close_mean')
-#     plt.show()
-
 def back_trace(reits, start_date=None, end_date=None):
     p = Profile(cash=10000)
     buy_price = reits.first_price
@@ -103,17 +94,17 @@ def back_trace(reits, start_date=None, end_date=None):
 def get_codes(start_date=None, end_date=None):
     code = {
             'SV3U.SI': Reits('SV3U.SI', start_date, end_date),
-            # 'M1GU.SI': Reits('M1GU.SI', start_date, end_date),
-            # 'P40U.SI': Reits('P40U.SI', start_date, end_date),
-            # 'AW9U.SI': Reits('AW9U.SI', start_date, end_date),
-            # 'A68U.SI': Reits('A68U.SI', start_date, end_date),
-            # 'A17U.SI': Reits('A17U.SI', start_date, end_date),
+            'M1GU.SI': Reits('M1GU.SI', start_date, end_date),
+            'P40U.SI': Reits('P40U.SI', start_date, end_date),
+            'AW9U.SI': Reits('AW9U.SI', start_date, end_date),
+            'A68U.SI': Reits('A68U.SI', start_date, end_date),
+            'A17U.SI': Reits('A17U.SI', start_date, end_date),
             'N2IU.SI': Reits('N2IU.SI', start_date, end_date),
-            # 'T82U.SI': Reits('T82U.SI', start_date, end_date),
+            'T82U.SI': Reits('T82U.SI', start_date, end_date),
             'SK6U.SI': Reits('SK6U.SI', start_date, end_date),
-            # 'J69U.SI': Reits('J69U.SI', start_date, end_date),
-            # 'C38U.SI': Reits('C38U.SI', start_date, end_date),
-            # 'K71U.SI': Reits('K71U.SI', start_date, end_date)
+            'J69U.SI': Reits('J69U.SI', start_date, end_date),
+            'C38U.SI': Reits('C38U.SI', start_date, end_date),
+            'K71U.SI': Reits('K71U.SI', start_date, end_date)
             }
     return code
 
