@@ -3,6 +3,39 @@ import pandas as pd
 import datetime
 
 
+def sharp_ratio(hist_price_df):
+    adj_close = hist_price_df['Adj Close']
+    pct_change = adj_close.pct_change()
+    profit = pct_change.mean()
+    risk = pct_change.std()
+
+    rolling_profit = pct_change.rolling(252).mean()
+    rolling_risk = pct_change.rolling(252).std()
+    # hist_price_df['sharp_ratio'] = rolling_profit / rolling_risk * (252 ** 0.5)
+
+    return profit / risk * (252 ** 0.5)
+
+
+def dividend_mean(dividends_df):
+    resample_div = dividends_df.groupby(
+        pd.PeriodIndex(dividends_df.index, freq='A'), axis=0).sum()
+    return resample_div['Dividends'].mean(), resample_div['Dividends'].std(ddof=0)
+
+
+class ReitsReporter(object):
+    def __init__(self, reits):
+        self._reits = reits
+        dividends_mean, dividends_std = dividend_mean(reits.dividends_df)
+
+        self.algo_mapping = {
+            'P/E': reits.strike / dividends_mean,
+            'Dividend Mean': dividends_mean,
+            'Dividend Stdv': dividends_std,
+            'Mean Q': int(1. / (dividends_mean / reits.strike) * 100),
+            'Sharpe Ratio': sharp_ratio(reits.hist_price_df),
+        }
+
+
 class Reits(object):
     def __init__(self, code, start_date=None, end_date=None):
         self.code = code
@@ -19,8 +52,6 @@ class Reits(object):
         self.dividends_df = None
         self.mix_df = None
         self.risk = 0.0
-        # POC
-        self.min_q = 0
 
         # calc data
         self.reload(code, start_date, end_date)
@@ -64,26 +95,11 @@ class Reits(object):
         self.first_price = self.hist_price_df.iloc[0].Close
         self.strike = self.hist_price_df.iloc[-1].Close
         self.years = self._year_to_date(self.first_day)
-        self.dividends_mean, self.dividends_std = self._avg_dividends()
         self.close_mean, self.close_std = self._avg_price()
         # self.risk = (((self.strike - self.close_mean) / self.close_std)) * 100.
         # self.risk = self.strike / (self.close_std + self.close_mean)
         # self.risk = self.strike / (self.close_mean + self.close_std)
-        self.sharp_ratio = self.sharp_ratio()
-        self.min_q = int(1. / (self.dividends_mean / self.strike) * 100)
         # min_q, the baseline Q which year dividends can buy 1 lot
-
-    def sharp_ratio(self):
-        adj_close = self.hist_price_df['Adj Close']
-        pct_change = adj_close.pct_change()
-        profit = pct_change.mean()
-        risk = pct_change.std()
-
-        rolling_profit = pct_change.rolling(252).mean()
-        rolling_risk = pct_change.rolling(252).std()
-        self.hist_price_df['sharp_ratio'] = rolling_profit / rolling_risk * (252 ** 0.5)
-
-        return profit / risk * (252 ** 0.5)
 
 
     def _sig_count(sig):
@@ -92,16 +108,23 @@ class Reits(object):
 
         return 0
 
+
     def _year_to_date(self, date_str):
         return (datetime.datetime.today() - datetime.datetime.strptime(date_str,
                 "%Y-%m-%d")).days / 365
 
 
-    def _avg_dividends(self):
-        resample_div = self.dividends_df.groupby(
-            pd.PeriodIndex(self.dividends_df.index, freq='A'), axis=0).sum()
-        return resample_div['Dividends'].mean(), resample_div['Dividends'].std(ddof=0)
-
-
     def _avg_price(self):
         return self.hist_price_df['Close'].mean(), self.hist_price_df['Close'].std(ddof=0)
+
+
+    def history_price(self):
+        self.hist_price_df['Close'].plot()
+
+
+    def history_dividend(self):
+        self.dividends_df['Dividends'].plot()
+
+
+    def mixchart(self):
+        self.mix_df.plot()
