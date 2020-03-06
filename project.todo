@@ -1,50 +1,6 @@
-FinRPG:
-  https://github.com/aziz/PlainTasks
-  ☐ Project structure
-    ✔ yaml logging @done (20-01-31 15:50)
-    ☐ module design
-      ☐ REITS (what should we provided)
-      ✔ HouseLoan @done (20-02-01 10:04)
-      ☐ saving
-      ☐ chatbot
-    ✔ requirements.txt @done (20-01-31 16:34)
-    ☐ setup.py （https://www.jianshu.com/p/9a5e7c935273）
-    ☐ README.md
-
---- ✄ -----------------------
-
-REITS requirements:
-  ☐ stock information
-  ☐ 趨勢
-  ☐ P/E
-  ☐ 去看 finlab
-
------ ✄ -----------------------
-
-Core Design:
-  ☐ 風險
-    ☐  dividends: avg/stdv (stdv 越高風險越高，不可計算)
-  ☐ ROE > 15
-  ✔ DCF （現金流量折現法 Discounted Cash Flow）（計算合理買入價） @done (20-02-10 01:02)
-    ☐ https://www.storm.mg/article/1546600
-    ☐ https://www.toptal.com/finance/financial-modeling/python-and-finance
-    ✔ 複利公式: amount*(1+rate)**time @done (20-02-10 01:02)
-    ✔ todo list @done (20-02-10 01:02)
-      ✔ 十年複利表 @done (20-02-10 01:02)
-      ✔ 十年股利折現表 @done (20-02-10 01:02)
-      ✔ PE表 @done (20-02-10 01:02)
-      ✔ 買進賣出信號 @done (20-02-10 01:02)
-      ✘ payout ratio = dividends/EPS @cancelled (20-02-17 22:34)
-      ☐ 怎麼計算年利率 （期望值）
-      ✔ 計算所有 reits 的合理價格 @done (20-02-17 22:34)
-
---- ✄ -----------------------
-strategy:
-  ☐ Low Risk (stdv lower)
-  ☐ Cheaper price - strike (smallest possible)
-  ☐ Stock dumps （股息图）
-  ☐ 股价涨幅斜率（理论上越平越好）
-  ☐ 股息涨幅斜率
-  ☐ refactor Reits to {'Keys': algo} 方便动态报告
-
-
+Design:
+  ☐ which algo we should pick?
+    ☐ Dividend stdv
+    ☐ DCF (pricing)
+    ☐ M (dividend 趋势 or price 趋势)
+    ☐ others
