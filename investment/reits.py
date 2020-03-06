@@ -1,9 +1,37 @@
 import logging
 import pandas as pd
 import datetime
+from investment.algo import DCF
+
+# report field
+Code                = 'Code'
+Years               = 'Years'
+First_Price         = 'First Price'
+Strike              = 'Strike'
+PE                  = 'P/E'
+Close_Mean          = 'Close Mean'
+Close_Stdv          = 'Close Stdv'
+Dividend_Mean       = 'Dividend Mean'
+Dividend_Stdv       = 'Dividend Stdv'
+Dividend_Stdv_pect  = 'Dividend Stdv %'
+Mean_Q              = 'Mean Q'
+Sharpe_Ratio        = 'Sharpe Ratio'
+Yield               = 'Yield'
+Risk                = 'Risk'
+M                   = 'M'
+Sig_count           = 'Sig_count'
+DCF_price           = 'DCF price'
+DCF_Flag            = 'DCF B/S Flag'
 
 
-def sharp_ratio(hist_price_df):
+# Algo difination
+def sig_count(sig, close_mean, close_std):
+    lower_bound = close_mean - (close_std * sig)
+    upper_bound = close_mean + (close_std * sig)
+    return lower_bound, upper_bound
+
+
+def sharpe_ratio(hist_price_df):
     adj_close = hist_price_df['Adj Close']
     pct_change = adj_close.pct_change()
     profit = pct_change.mean()
@@ -11,7 +39,9 @@ def sharp_ratio(hist_price_df):
 
     rolling_profit = pct_change.rolling(252).mean()
     rolling_risk = pct_change.rolling(252).std()
-    # hist_price_df['sharp_ratio'] = rolling_profit / rolling_risk * (252 ** 0.5)
+    # FIXME:
+    # should we using sharpe with moving windows?
+    # hist_price_df['sharpe_ratio'] = rolling_profit / rolling_risk * (252 ** 0.5)
 
     return profit / risk * (252 ** 0.5)
 
@@ -22,36 +52,56 @@ def dividend_mean(dividends_df):
     return resample_div['Dividends'].mean(), resample_div['Dividends'].std(ddof=0)
 
 
-class ReitsReporter(object):
+class ReitsEnrichment(object):
+
+
     def __init__(self, reits):
         self._reits = reits
         dividends_mean, dividends_std = dividend_mean(reits.dividends_df)
+        close_mean = reits.hist_price_df['Close'].mean()
+        close_std = reits.hist_price_df['Close'].std(ddof=0)
 
-        self.algo_mapping = {
-            'P/E': reits.strike / dividends_mean,
-            'Dividend Mean': dividends_mean,
-            'Dividend Stdv': dividends_std,
-            'Mean Q': int(1. / (dividends_mean / reits.strike) * 100),
-            'Sharpe Ratio': sharp_ratio(reits.hist_price_df),
+        dcf = DCF()
+        price_range = dcf.price(strike=reits.strike, PE=1, dividend=
+                                dividends_mean, years=10)
+        price_range = list(map(lambda x: round(x, 2), price_range))
+
+        self.report = {
+            Code                : reits.code,
+            Years               : reits.years,
+            First_Price         : reits.first_price,
+            Strike              : reits.strike,
+            PE                  : reits.strike / dividends_mean,
+            Close_Mean          : close_mean,
+            Close_Stdv          : close_std,
+            Dividend_Mean       : dividends_mean,
+            Dividend_Stdv       : dividends_std,
+            Dividend_Stdv_pect  : dividends_std / dividends_mean,
+            Sharpe_Ratio        : sharpe_ratio(reits.hist_price_df),
+            Yield               : dividends_mean / close_mean,
+            Risk                : (reits.strike - close_mean) / close_std,
+            M                   : (reits.strike - reits.first_price) / reits.years,
+            Sig_count           : sig_count(1, close_mean, close_std), # not sure
+            DCF_price           : price_range,
+            DCF_Flag            : reits.strike / price_range[1]
         }
+
+
+    def projection(self, fields):
+        return [self.report.get(field, None) for field in fields]
 
 
 class Reits(object):
     def __init__(self, code, start_date=None, end_date=None):
         self.code = code
         self.years = 0
-        self.strike = 0
-        self.close_mean = 0
-        self.close_std = 0
-        self.dividends_mean = 0
-        self.dividends_std = 0
+        self.strike = 0his
         self.first_day = None
         self.first_price = 0.0
         self.last_day = None
         self.hist_price_df = None
         self.dividends_df = None
         self.mix_df = None
-        self.risk = 0.0
 
         # calc data
         self.reload(code, start_date, end_date)
@@ -95,27 +145,11 @@ class Reits(object):
         self.first_price = self.hist_price_df.iloc[0].Close
         self.strike = self.hist_price_df.iloc[-1].Close
         self.years = self._year_to_date(self.first_day)
-        self.close_mean, self.close_std = self._avg_price()
-        # self.risk = (((self.strike - self.close_mean) / self.close_std)) * 100.
-        # self.risk = self.strike / (self.close_std + self.close_mean)
-        # self.risk = self.strike / (self.close_mean + self.close_std)
-        # min_q, the baseline Q which year dividends can buy 1 lot
-
-
-    def _sig_count(sig):
-        lower_bound = self.close_mean - (self.close_std * sig)
-        upper_bound = self.close_mean + (self.close_std * sig)
-
-        return 0
 
 
     def _year_to_date(self, date_str):
         return (datetime.datetime.today() - datetime.datetime.strptime(date_str,
                 "%Y-%m-%d")).days / 365
-
-
-    def _avg_price(self):
-        return self.hist_price_df['Close'].mean(), self.hist_price_df['Close'].std(ddof=0)
 
 
     def history_price(self):
