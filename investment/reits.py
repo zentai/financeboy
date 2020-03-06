@@ -95,7 +95,7 @@ class Reits(object):
     def __init__(self, code, start_date=None, end_date=None):
         self.code = code
         self.years = 0
-        self.strike = 0his
+        self.strike = 0
         self.first_day = None
         self.first_price = 0.0
         self.last_day = None
